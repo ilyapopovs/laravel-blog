@@ -1,11 +1,10 @@
-<?php
-/**
- * @var LengthAwarePaginator $posts
- */
+@php
+    /**
+     * @var LengthAwarePaginator $posts
+     */
 
-use Illuminate\Pagination\LengthAwarePaginator;
-
-?>
+    use Illuminate\Pagination\LengthAwarePaginator;
+@endphp
 
 @extends('layouts.app')
 
@@ -36,41 +35,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
             @if ($posts->count())
                 @foreach ($posts as $post)
-                    <div class="mb-4">
-                        <a href=""><span
-                                class="font-bold">{{'@' . $post->user->username}}</span> {{ $post->created_at->diffForHumans() }}
-                        </a>
-                        <p>
-                            {{ $post->body }}
-                        </p>
-
-                        @can('delete', $post)
-                        <form action="{{ route('posts.delete', $post) }}" method="post" class="mr-1">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-blue-500">Delete</button>
-                        </form>
-                        @endcan
-
-                        <div class="flex items-center">
-                            @auth
-                                @if (!$post->likedBy(auth()->user()))
-                                    <form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
-                                        @csrf
-                                        <button type="submit" class="text-blue-500">Like</button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-blue-500">Unlike</button>
-                                    </form>
-                                @endif
-                            @endauth
-
-                            <span>{{ $post->likes->count() }} {{ \Illuminate\Support\Str::plural('like', $post->likes->count()) }}</span>
-                        </div>
-                    </div>
+                    <x-post :post="$post"></x-post>
                 @endforeach
             @else
                 <p>There are no posts</p>

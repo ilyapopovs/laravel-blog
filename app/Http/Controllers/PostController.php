@@ -27,6 +27,13 @@ class PostController extends Controller
         ]);
     }
 
+    public function show(Post $post): Factory|View|Application
+    {
+        return view('posts.show', [
+            'post' => $post,
+        ]);
+    }
+
     /**
      * @throws ValidationException
      */
