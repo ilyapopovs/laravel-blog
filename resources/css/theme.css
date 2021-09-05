@@ -1,0 +1,67 @@
+/*
+    Code responsible for dark/light/system themes,
+    used in tailwind.config.js
+*/
+
+:root,
+.system-theme,
+.light-theme {
+    /* HSL values, not using hsl() to integrate with Tailwind in a way that supports Tailwind's opacity utilities */
+    --color-text-primary: 210, 11%, 4%;
+    --color-text-inverted: 0, 0%, 100%;
+    --color-text-link: 224, 76%, 48%;
+    --color-bg-primary: 0, 0%, 100%;
+    --color-bg-secondary: 200, 10%, 94%;
+    --color-bg-inverted: 210, 11%, 4%;
+    --color-border-primary: 208, 11%, 74%;
+    --color-btn-primary: 235, 72%, 55%;
+    --color-btn-secondary: 208, 11%, 74%;
+    --color-btn-success: 140, 72%, 45%;
+    --color-btn-danger: 0, 72%, 55%;
+}
+
+.dark-theme {
+    --color-text-primary: 210, 11%, 90%;
+    --color-text-inverted: 210, 11%, 4%;
+    --color-text-link: 224, 76%, 68%;
+    --color-bg-primary: 210, 11%, 20%;
+    --color-bg-secondary: 210, 11%, 10%;
+    --color-bg-inverted: 0, 0%, 100%;
+    --color-border-primary: 0, 0%, 0%;
+    --color-btn-primary: 235, 72%, 75%;
+    --color-btn-secondary: 208, 11%, 30%;
+    --color-btn-success: 140, 72%, 55%;
+    --color-btn-danger: 0, 72%, 65%;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* copy of .dark-theme */
+    .system-theme {
+        --color-text-primary: 210, 11%, 90%;
+        --color-text-inverted: 210, 11%, 4%;
+        --color-text-link: 224, 76%, 68%;
+        --color-bg-primary: 210, 11%, 20%;
+        --color-bg-secondary: 210, 11%, 10%;
+        --color-bg-inverted: 0, 0%, 100%;
+        --color-border-primary: 0, 0%, 0%;
+        --color-btn-primary: 235, 72%, 75%;
+        --color-btn-secondary: 208, 11%, 30%;
+        --color-btn-success: 140, 72%, 55%;
+        --color-btn-danger: 0, 72%, 65%;
+    }
+}
+
+@layer components {
+    .theme-container {
+        @apply text-theme-primary bg-theme-secondary;
+        transition: background-color ease-in 200ms, color ease-in 200ms,
+            border-top-color ease-in 200ms, border-right-color ease-in 200ms,
+            border-bottom-color ease-in 200ms, border-left-color ease-in 200ms;
+    }
+}
+
+@layer utilities {
+    .theme-container {
+        @apply motion-reduce:transition-none;
+    }
+}

@@ -1,0 +1,12 @@
+@import "theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .container {
+        @apply max-w-screen-xl mx-auto px-2 sm:px-10;
+    }
+}
+
