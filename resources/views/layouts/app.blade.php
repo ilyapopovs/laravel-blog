@@ -8,10 +8,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="system-theme theme-container relative pb-24 sm:pb-16" style="min-height: 100vh;">
-@include('layouts.components.navbar')
-<main>
-    @yield('content')
-</main>
-@include('layouts.components.footer')
+<div id="app">
+    @include('layouts.components.navbar')
+    <main>
+        @yield('content')
+    </main>
+    @include('layouts.components.footer')
+</div>
+<script src="{{ mix('/js/manifest.js') }}"></script>
+<script src="{{ mix('/js/vendor.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
