@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,15 +12,6 @@ const webpack = require('webpack');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [require('tailwindcss')])
-    .vue()
-    .extract();
-
-mix.webpackConfig({
-    plugins: [
-        new webpack.DefinePlugin({
-            __VUE_OPTIONS_API__: true,
-            __VUE_PROD_DEVTOOLS__: false,
-        }),
-    ],
-});
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss')
+    ]);
