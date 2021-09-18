@@ -20,7 +20,7 @@
 
                 {{ $posts->links() }}
             @else
-                <p>{{ $user->name }} does not have any posts</p>
+                <p class="mb-4">{{ $user->name }} does not have any posts</p>
             @endif
         </div>
     </div>
