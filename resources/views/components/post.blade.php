@@ -9,9 +9,11 @@
 <div class="mb-4">
     <a href="{{ route('users.posts', $post->user ) }}"
        class="font-bold">{{'@' . $post->user->username}}</a> {{ $post->created_at->diffForHumans() }}
-    <p>
-        <a href="{{ route('posts.show', $post) }}">{{ $post->body }}</a>
-    </p>
+    <a href="{{ route('posts.show', $post) }}">
+        <p class="py-2">
+            {{ $post->body }}
+        </p>
+    </a>
 
     @can('delete', $post)
         <form action="{{ route('posts.delete', $post) }}" method="post" class="mr-1">

@@ -12,6 +12,7 @@ function withOpacity(variableName) {
 }
 
 module.exports = {
+    important: true,
     purge: [
         "./resources/**/*.{css,js,ts,vue}",
         "./resources/**/*.blade.php",

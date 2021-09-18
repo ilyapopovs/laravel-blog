@@ -1,10 +1,10 @@
 <footer class="absolute bottom-0 w-full h-24 sm:h-16 bg-theme-primary border-t border-theme-primary">
     <div class="h-full container flex flex-col sm:flex-row justify-center items-center text-theme-primary">
-        <p class="font-sans font-extralight text-sm">Made with Laravel + Vue.js</p>
+        <p class="font-sans font-extralight text-sm">Made with Laravel + Tailwind</p>
         <div class="hidden sm:block text-theme-primary mx-6">|</div>
         <div class="flex pt-2 sm:pt-0 font-sans font-normal text-sm">
             <a target="_blank" class="flex items-center mr-4"
-               href="https://github.com/ilyapopovs/postful">
+               href="https://github.com/ilyapopovs/laravel-blog">
                 <span class="inline-block sm:hidden mr-2">GitHub</span>
                 <svg class="inline logo" fill="hsl(var(--color-text-primary))" xmlns="http://www.w3.org/2000/svg"
                      width="24"

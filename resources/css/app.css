@@ -1,12 +1,97 @@
 @import "theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    .container {
-        @apply max-w-screen-xl mx-auto px-2 sm:px-10;
+@layer components {
+    html,
+    body {
+        @apply font-noto;
+    }
+
+    .theme-container {
+        @apply text-theme-primary bg-theme-secondary;
+        transition: background-color ease-in 200ms, color ease-in 200ms,
+        border-top-color ease-in 200ms, border-right-color ease-in 200ms,
+        border-bottom-color ease-in 200ms, border-left-color ease-in 200ms;
+    }
+
+    svg.logo:hover {
+        filter: brightness(90%);
+    }
+
+    .btn {
+        @apply w-full flex justify-center items-center text-center text-xl font-bold text-theme-primary bg-theme-btn-secondary py-2 px-4 m-2 mr-4 ml-0 rounded ring-offset-2 ring-offset-theme-primary ring-theme-secondary cursor-pointer;
+    }
+
+    .btn:hover {
+        filter: brightness(90%);
+    }
+
+    .btn:disabled,
+    .btn[disabled] {
+        cursor: not-allowed;
+    }
+
+    .btn-primary {
+        @apply text-theme-inverted bg-theme-btn-primary ring-theme-primary;
+    }
+
+    .btn-success {
+        @apply text-theme-inverted bg-theme-btn-success ring-theme-success;
+    }
+
+    .btn-danger {
+        @apply text-theme-inverted bg-theme-btn-danger ring-theme-danger;
+    }
+
+    .input {
+        @apply bg-theme-secondary p-4 border-2 rounded-lg border-theme-primary text-base;
+    }
+
+    .card {
+        @apply sm:w-10/12 md:w-8/12 mx-auto p-6 bg-theme-primary rounded-lg;
     }
 }
 
+@layer utilities {
+    #theme-container {
+        @apply motion-reduce:transition-none;
+    }
+
+    #navbar-dropdown {
+        transform: translateY(calc(-100% + 1px));
+        z-index: 0;
+        transition: 200ms ease;
+        @apply border-theme-primary border-b rounded-b-none motion-reduce:transition-none;
+    }
+
+    #navbar-dropdown.dropdown-shown {
+        transform: translateY(0%);
+        @apply rounded-b-2xl;
+    }
+
+    .container {
+        @apply max-w-screen-xl mx-auto px-2 sm:px-10;
+    }
+
+    main {
+        @apply py-10;
+    }
+
+    .btn {
+        tab-index: 0;
+        @apply focus:ring-2 sm:w-auto;
+    }
+
+    .theme-switcher {
+        @apply focus:ring-0;
+    }
+
+    .theme-switcher:focus {
+        box-shadow: none;
+    }
+}

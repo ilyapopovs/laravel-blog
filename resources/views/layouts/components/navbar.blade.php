@@ -7,7 +7,7 @@
         </ul>
         <ul class="h-full flex items-stretch">
             @auth
-                <li><a href="" class="p-3">{{ auth()->user()->name }}</a></li>
+                <li><a href="{{ route('users.posts', auth()->user() ) }}" class="p-3">{{ auth()->user()->name }}</a></li>
                 <li>
                     <form class="inline p-3" action="{{ route('logout') }}" method="post">
                         @csrf
