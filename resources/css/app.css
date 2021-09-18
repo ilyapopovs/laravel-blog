@@ -24,7 +24,7 @@
     }
 
     .btn {
-        @apply w-full flex justify-center items-center text-center text-xl font-bold text-theme-primary bg-theme-btn-secondary py-2 px-4 m-2 mr-4 ml-0 rounded ring-offset-2 ring-offset-theme-primary ring-theme-secondary cursor-pointer;
+        @apply w-full flex justify-center items-center text-center text-lg text-theme-primary bg-theme-btn-secondary py-2 px-4 m-2 mr-4 ml-0 rounded ring-offset-2 ring-offset-theme-primary ring-theme-secondary cursor-pointer;
     }
 
     .btn:hover {
@@ -87,11 +87,11 @@
         @apply focus:ring-2 sm:w-auto;
     }
 
-    .theme-switcher {
+    .navbar-icon {
         @apply focus:ring-0;
     }
 
-    .theme-switcher:focus {
+    .navbar-icon:focus {
         box-shadow: none;
     }
 }
