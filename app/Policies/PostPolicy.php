@@ -22,6 +22,6 @@ class PostPolicy
 
     public function delete(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id;
+        return $user->id === $post->user_id || $user->id == env('ADMIN_USER_ID', -1);
     }
 }

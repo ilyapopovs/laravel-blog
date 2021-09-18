@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class PostLikeController extends Controller
 {
@@ -32,7 +33,12 @@ class PostLikeController extends Controller
         );
 
         if (!$hadPreviouslyLiked) {
-            Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+            try {
+                Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+            } catch (Throwable $e) {
+                // Do nothing because the demo won't have emails enabled when deployed
+                // Would log the exception to Sentry in a serious project
+            }
         }
 
         return back();

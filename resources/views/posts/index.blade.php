@@ -9,15 +9,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-10">
-        <div class="w-8/12 mx-auto p-6 bg-theme-primary rounded-lg">
+    <div class="container">
+        <div class="card pb-2">
             @auth
-                <form action="{{ route('posts') }}" method="post" class="mb-4">
+                <form action="{{ route('posts') }}" method="post" class="mb-8">
                     @csrf
                     <div class="mb-4">
                         <label for="body" class="sr-only">Body</label>
                         <textarea name="body" id="body" cols="30" rows="4"
-                                  class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror"
+                                  class="bg-theme-secondary border-theme-primary border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror"
                                   placeholder="Post something!"></textarea>
 
                         @error('body')
@@ -27,15 +27,16 @@
                         @enderror
                     </div>
 
-                    <div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Post</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
                 </form>
             @endauth
 
             @if ($posts->count())
                 @foreach ($posts as $post)
                     <x-post :post="$post"></x-post>
+                    @if (!$loop->last)
+                        <hr class="my-4 px-8 border-theme-primary" />
+                    @endif
                 @endforeach
             @else
                 <p>There are no posts</p>
